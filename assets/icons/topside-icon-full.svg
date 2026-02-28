@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- macOS-style drop shadow -->
+    <filter id="iconShadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Background gradient - deep ocean blue to dark navy -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+
+    <!-- Periscope body gradient - metallic silver -->
+    <linearGradient id="periscopeBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A8B8C8"/>
+      <stop offset="20%" stop-color="#D4DEE8"/>
+      <stop offset="50%" stop-color="#E8EEF4"/>
+      <stop offset="80%" stop-color="#D4DEE8"/>
+      <stop offset="100%" stop-color="#A8B8C8"/>
+    </linearGradient>
+
+    <!-- Periscope head gradient -->
+    <linearGradient id="periscopeHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8899AA"/>
+      <stop offset="20%" stop-color="#B8C8D8"/>
+      <stop offset="50%" stop-color="#D0DCE8"/>
+      <stop offset="80%" stop-color="#B8C8D8"/>
+      <stop offset="100%" stop-color="#8899AA"/>
+    </linearGradient>
+
+    <!-- Lens glow gradient -->
+    <radialGradient id="lensGlow" cx="0.4" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="#88DDFF"/>
+      <stop offset="40%" stop-color="#44AAEE"/>
+      <stop offset="100%" stop-color="#2266AA"/>
+    </radialGradient>
+
+    <!-- Lens highlight -->
+    <radialGradient id="lensHighlight" cx="0.35" cy="0.3" r="0.4">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtle inner glow for the background -->
+    <radialGradient id="innerGlow" cx="0.5" cy="0.35" r="0.65">
+      <stop offset="0%" stop-color="#2A4A6F" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0D1B2A" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Water surface shimmer -->
+    <linearGradient id="waterSurface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3A6B8F" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#2A5070" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1E3A5F" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Clip path for the macOS squircle shape -->
+    <!-- Using a continuous rounded rectangle approximation -->
+    <clipPath id="iconMask">
+      <rect x="100" y="100" width="824" height="824" rx="185.4" ry="185.4"/>
+    </clipPath>
+
+    <!-- Emission rings -->
+    <linearGradient id="ringGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#44AAEE" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#44AAEE" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#66CCFF" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#44AAEE" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#44AAEE" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon container with macOS squircle mask and shadow -->
+  <g filter="url(#iconShadow)">
+    <g clip-path="url(#iconMask)">
+
+      <!-- Background fill -->
+      <rect x="100" y="100" width="824" height="824" fill="url(#bgGradient)"/>
+
+      <!-- Subtle inner glow -->
+      <rect x="100" y="100" width="824" height="824" fill="url(#innerGlow)"/>
+
+      <!-- Water surface line - horizontal divider suggesting waterline -->
+      <line x1="100" y1="580" x2="924" y2="580" stroke="#3A7AAA" stroke-width="1.5" opacity="0.4"/>
+      <rect x="100" y="560" width="824" height="40" fill="url(#waterSurface)"/>
+
+      <!-- Subtle wave patterns below waterline -->
+      <path d="M100,600 Q250,592 350,600 Q450,608 550,600 Q650,592 750,600 Q850,608 924,600"
+            fill="none" stroke="#3A7AAA" stroke-width="1" opacity="0.2"/>
+      <path d="M100,630 Q220,622 320,630 Q420,638 520,630 Q620,622 720,630 Q820,638 924,630"
+            fill="none" stroke="#3A7AAA" stroke-width="1" opacity="0.15"/>
+
+      <!-- ====== PERISCOPE ====== -->
+
+      <!-- Periscope vertical tube (below waterline extends down) -->
+      <rect x="476" y="380" width="72" height="320" rx="4" fill="url(#periscopeBody)"/>
+
+      <!-- Tube edge highlights -->
+      <rect x="476" y="380" width="3" height="320" fill="#8899AA" opacity="0.5" rx="1"/>
+      <rect x="545" y="380" width="3" height="320" fill="#F0F4F8" opacity="0.3" rx="1"/>
+
+      <!-- Tube rivets/detail bands -->
+      <rect x="472" y="560" width="80" height="6" rx="2" fill="#7888A0" opacity="0.3"/>
+      <rect x="472" y="650" width="80" height="6" rx="2" fill="#7888A0" opacity="0.3"/>
+
+      <!-- Periscope head housing -->
+      <g transform="translate(512, 380)">
+        <!-- Angled head connecting piece -->
+        <path d="M-36,0 L-36,-30 Q-36,-50 -20,-60 L40,-60 Q60,-60 70,-42 L90,-5 Q95,8 85,15 L36,15 L36,0 Z"
+              fill="url(#periscopeHead)" stroke="#7888A0" stroke-width="1.5"/>
+
+        <!-- Head top surface highlight -->
+        <path d="M-34,-28 Q-34,-48 -18,-58 L38,-58 Q56,-58 66,-42 L84,-8"
+              fill="none" stroke="#D8E4F0" stroke-width="1.5" opacity="0.4"/>
+
+        <!-- Periscope eyepiece/lens housing -->
+        <g transform="translate(78, -24)">
+          <!-- Lens outer ring -->
+          <circle cx="0" cy="0" r="32" fill="#556677" stroke="#445566" stroke-width="2"/>
+          <circle cx="0" cy="0" r="28" fill="#334455" stroke="#445566" stroke-width="1"/>
+
+          <!-- Lens glass -->
+          <circle cx="0" cy="0" r="24" fill="url(#lensGlow)"/>
+
+          <!-- Lens inner ring -->
+          <circle cx="0" cy="0" r="24" fill="none" stroke="#2266AA" stroke-width="1.5" opacity="0.6"/>
+
+          <!-- Lens highlight/reflection -->
+          <circle cx="0" cy="0" r="24" fill="url(#lensHighlight)"/>
+
+          <!-- Small specular highlight -->
+          <ellipse cx="-8" cy="-10" rx="6" ry="4" fill="#FFFFFF" opacity="0.5" transform="rotate(-20, -8, -10)"/>
+        </g>
+      </g>
+
+      <!-- Emission rings from lens (AI "seeing" effect) -->
+      <g opacity="0.6">
+        <!-- Ring 1 (closest) -->
+        <ellipse cx="630" cy="352" rx="30" ry="20" fill="none" stroke="#66CCFF" stroke-width="2" opacity="0.5" transform="rotate(-15, 630, 352)"/>
+        <!-- Ring 2 -->
+        <ellipse cx="665" cy="340" rx="40" ry="26" fill="none" stroke="#66CCFF" stroke-width="1.5" opacity="0.35" transform="rotate(-15, 665, 340)"/>
+        <!-- Ring 3 (farthest) -->
+        <ellipse cx="700" cy="328" rx="50" ry="32" fill="none" stroke="#66CCFF" stroke-width="1" opacity="0.2" transform="rotate(-15, 700, 328)"/>
+      </g>
+
+      <!-- Small particles/data dots emanating from lens -->
+      <circle cx="648" cy="338" r="2" fill="#88DDFF" opacity="0.6"/>
+      <circle cx="680" cy="350" r="1.5" fill="#88DDFF" opacity="0.4"/>
+      <circle cx="710" cy="320" r="2.5" fill="#88DDFF" opacity="0.3"/>
+      <circle cx="660" cy="310" r="1.5" fill="#88DDFF" opacity="0.5"/>
+
+      <!-- Top-left subtle light source indicator -->
+      <ellipse cx="250" cy="250" rx="120" ry="100" fill="#FFFFFF" opacity="0.03"/>
+
+    </g>
+  </g>
+</svg>
