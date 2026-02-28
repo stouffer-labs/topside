@@ -1,0 +1,426 @@
+/* Detail window styles — reuses overlay class names for conversation/buttons/chat */
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: #0f0f0f;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #e5e5e5;
+}
+
+/* ─── Main container ─── */
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0f0f0f;
+}
+
+/* ─── Title bar ─── */
+.detail-titlebar {
+  -webkit-app-region: drag;
+  padding: 12px 16px 8px 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1c1c1c;
+  flex-shrink: 0;
+}
+
+.detail-titlebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-titlebar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4d4d4;
+}
+
+.detail-titlebar-meta {
+  font-size: 10px;
+  color: #525252;
+}
+
+.detail-titlebar-actions {
+  -webkit-app-region: no-drag;
+  display: flex;
+  gap: 6px;
+}
+
+.detail-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #1c1c1c;
+  color: #a3a3a3;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.detail-btn:hover {
+  background: #262626;
+  color: #e5e5e5;
+}
+
+.detail-btn-primary {
+  background: #4338ca;
+  border-color: #4f46e5;
+  color: #e0e7ff;
+}
+
+.detail-btn-primary:hover {
+  background: #4f46e5;
+}
+
+/* ─── Conversation area (reuses overlay class names) ─── */
+.conversation-area {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  padding: 8px 0;
+}
+
+.conversation-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.conversation-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.conversation-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* Message rows */
+.conv-user,
+.conv-assistant {
+  display: flex;
+  gap: 8px;
+  padding: 6px 16px;
+}
+
+.conv-icon {
+  flex-shrink: 0;
+  font-size: 1em;
+  line-height: 1.6;
+  width: 20px;
+  text-align: center;
+  color: #a3a3a3;
+}
+
+.conv-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.conv-text {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #e5e5e5;
+}
+
+.conv-user .conv-text {
+  color: #93c5fd;
+  font-size: 0.923em;
+}
+
+/* Allow selecting AI response text */
+.conv-assistant .conv-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ─── Markdown rendering ─── */
+.md-code-wrapper {
+  position: relative;
+  margin: 6px 0;
+}
+
+.md-code-block {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #e2e8f0;
+  white-space: pre;
+}
+
+.md-code-block code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+.md-code-copy {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: #737373;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.md-code-copy:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
+}
+
+.md-inline-code {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: #c4b5fd;
+}
+
+/* ─── Interactive buttons ─── */
+.conv-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.ai-button {
+  font-size: 11px;
+  font-weight: 500;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 14px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.ai-button:hover {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.5);
+  color: #ddd6fe;
+  transform: translateY(-1px);
+}
+
+.ai-button:active {
+  transform: translateY(0);
+}
+
+/* ─── Screenshot thumbnail ─── */
+.screenshot-thumb {
+  margin: 4px 16px 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+  transition: border-color 0.15s;
+}
+
+.screenshot-thumb:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.screenshot-thumb img {
+  height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.screenshot-thumb-label {
+  font-size: 10px;
+  color: #737373;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Chat input ─── */
+.chat-input-area {
+  padding: 8px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  font-size: 13px;
+  color: #e5e5e5;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 8px;
+  padding: 8px 12px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.chat-input:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.chat-input::placeholder {
+  color: #737373;
+}
+
+.chat-send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(139, 92, 246, 0.3);
+  color: #c4b5fd;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  background: rgba(139, 92, 246, 0.5);
+  color: #ddd6fe;
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ─── Status bar ─── */
+.detail-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-text {
+  font-size: 10px;
+  color: #525252;
+}
+
+/* ─── Error banner ─── */
+.detail-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(220, 38, 38, 0.15);
+  border-top: 1px solid rgba(220, 38, 38, 0.3);
+  font-size: 12px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.detail-error-title {
+  color: #fca5a5;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.detail-error-detail {
+  color: #d4d4d4;
+  flex: 1;
+}
+
+.detail-error-dismiss {
+  padding: 3px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e5e5;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.detail-error-dismiss:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Streaming indicator ─── */
+.typing-dots span {
+  display: inline-block;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+  opacity: 0.3;
+  font-size: 18px;
+  margin: 0 2px;
+  color: #818cf8;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
+
+/* ─── Animations ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-from-bottom {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-from-bottom {
+  animation: slide-in-from-bottom 0.2s ease-out;
+}
