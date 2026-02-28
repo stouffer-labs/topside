@@ -1,0 +1,13 @@
+{
+  "name": "mlx-inference-addon",
+  "version": "1.0.0",
+  "description": "Native addon for MLX vision-language model inference on Apple Silicon",
+  "main": "binding.js",
+  "os": ["darwin"],
+  "dependencies": {
+    "node-addon-api": "^8.0.0"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  }
+}
