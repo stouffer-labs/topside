@@ -1,0 +1,13 @@
+{
+  "name": "active-window-addon",
+  "version": "1.0.0",
+  "description": "Native addon for macOS active window detection via CGWindowListCopyWindowInfo",
+  "main": "binding.js",
+  "os": ["darwin"],
+  "dependencies": {
+    "node-addon-api": "^8.0.0"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  }
+}
