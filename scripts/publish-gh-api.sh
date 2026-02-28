@@ -157,8 +157,9 @@ for file in "${FILES[@]}"; do
   fi
 
   sha="$(gh api "repos/${OWNER}/${REPO}/contents/${file}" --jq '.sha' 2>/dev/null || true)"
-  content="$(base64 -i "$file" | tr -d '\n')"
+  content_file="$(mktemp -t topside-publish-content.XXXXXX)"
   payload="$(mktemp -t topside-publish-payload.XXXXXX)"
+  base64 -i "$file" | tr -d '\n' > "$content_file"
 
   if [[ -n "$sha" ]]; then
     action="update"
@@ -166,12 +167,12 @@ for file in "${FILES[@]}"; do
     if [[ "$DRY_RUN" -eq 1 ]]; then
       echo "dry-run: ${action} ${file}"
       updated=$((updated + 1))
-      rm -f "$payload"
+      rm -f "$payload" "$content_file"
       continue
     fi
     jq -n \
       --arg message "$message" \
-      --arg content "$content" \
+      --rawfile content "$content_file" \
       --arg sha "$sha" \
       --arg branch "$BRANCH" \
       '{message:$message, content:$content, sha:$sha, branch:$branch}' >"$payload"
@@ -188,12 +189,12 @@ for file in "${FILES[@]}"; do
     if [[ "$DRY_RUN" -eq 1 ]]; then
       echo "dry-run: ${action} ${file}"
       added=$((added + 1))
-      rm -f "$payload"
+      rm -f "$payload" "$content_file"
       continue
     fi
     jq -n \
       --arg message "$message" \
-      --arg content "$content" \
+      --rawfile content "$content_file" \
       --arg branch "$BRANCH" \
       '{message:$message, content:$content, branch:$branch}' >"$payload"
     if gh api --method PUT "repos/${OWNER}/${REPO}/contents/${file}" --input "$payload" >/dev/null; then
@@ -204,7 +205,7 @@ for file in "${FILES[@]}"; do
       failed=$((failed + 1))
     fi
   fi
-  rm -f "$payload"
+  rm -f "$payload" "$content_file"
 done
 
 echo
