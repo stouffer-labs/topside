@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- macOS-style drop shadow -->
+    <filter id="iconShadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Background gradient - darker, more dramatic -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F2027"/>
+      <stop offset="50%" stop-color="#203A43"/>
+      <stop offset="100%" stop-color="#0F2027"/>
+    </linearGradient>
+
+    <!-- Periscope gradient - brushed steel look -->
+    <linearGradient id="steelGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8CA0B0"/>
+      <stop offset="15%" stop-color="#C0D0DD"/>
+      <stop offset="35%" stop-color="#E0E8F0"/>
+      <stop offset="50%" stop-color="#F0F4F8"/>
+      <stop offset="65%" stop-color="#E0E8F0"/>
+      <stop offset="85%" stop-color="#C0D0DD"/>
+      <stop offset="100%" stop-color="#8CA0B0"/>
+    </linearGradient>
+
+    <!-- Accent gradient - teal/cyan for lens -->
+    <radialGradient id="lensGrad" cx="0.4" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="#7DFFEE"/>
+      <stop offset="35%" stop-color="#44D4CC"/>
+      <stop offset="70%" stop-color="#22A8A0"/>
+      <stop offset="100%" stop-color="#0D6B6E"/>
+    </radialGradient>
+
+    <!-- Lens inner glow -->
+    <radialGradient id="lensInnerGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#7DFFEE" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#22A8A0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ambient glow behind periscope -->
+    <radialGradient id="ambientGlow" cx="0.55" cy="0.4" r="0.4">
+      <stop offset="0%" stop-color="#22A8A0" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#22A8A0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clip to squircle -->
+    <clipPath id="iconMask">
+      <rect x="100" y="100" width="824" height="824" rx="185.4" ry="185.4"/>
+    </clipPath>
+  </defs>
+
+  <g filter="url(#iconShadow)">
+    <g clip-path="url(#iconMask)">
+
+      <!-- Background -->
+      <rect x="100" y="100" width="824" height="824" fill="url(#bgGrad)"/>
+
+      <!-- Ambient glow -->
+      <rect x="100" y="100" width="824" height="824" fill="url(#ambientGlow)"/>
+
+      <!-- Geometric grid pattern (subtle, techy feel) -->
+      <g opacity="0.06" stroke="#44D4CC" stroke-width="0.8" fill="none">
+        <line x1="100" y1="300" x2="924" y2="300"/>
+        <line x1="100" y1="400" x2="924" y2="400"/>
+        <line x1="100" y1="500" x2="924" y2="500"/>
+        <line x1="100" y1="600" x2="924" y2="600"/>
+        <line x1="100" y1="700" x2="924" y2="700"/>
+        <line x1="300" y1="100" x2="300" y2="924"/>
+        <line x1="400" y1="100" x2="400" y2="924"/>
+        <line x1="500" y1="100" x2="500" y2="924"/>
+        <line x1="600" y1="100" x2="600" y2="924"/>
+        <line x1="700" y1="100" x2="700" y2="924"/>
+      </g>
+
+      <!-- ====== GEOMETRIC PERISCOPE ====== -->
+      <!-- More angular, stylized, modern interpretation -->
+
+      <!-- Main vertical shaft -->
+      <g>
+        <!-- Tube body -->
+        <path d="M472,420 L472,750 Q472,760 482,760 L542,760 Q552,760 552,750 L552,420 Z"
+              fill="url(#steelGrad)"/>
+
+        <!-- Left edge shadow -->
+        <rect x="472" y="420" width="6" height="340" fill="#6A7A8A" opacity="0.4" rx="1"/>
+
+        <!-- Right edge highlight -->
+        <rect x="548" y="420" width="4" height="340" fill="#F8FCFF" opacity="0.25" rx="1"/>
+
+        <!-- Detail bands -->
+        <rect x="468" y="570" width="88" height="5" rx="2" fill="#5A7080" opacity="0.25"/>
+        <rect x="468" y="680" width="88" height="5" rx="2" fill="#5A7080" opacity="0.25"/>
+
+        <!-- Tube center line detail -->
+        <line x1="512" y1="440" x2="512" y2="740" stroke="#A0B0C0" stroke-width="0.5" opacity="0.3"/>
+      </g>
+
+      <!-- Periscope head - angular/geometric style -->
+      <g>
+        <!-- Main head block -->
+        <path d="M456,420 L456,365 Q456,340 475,328 L575,280 Q600,268 618,285 L650,325 Q660,340 648,358 L552,400 L552,420 Z"
+              fill="url(#steelGrad)" stroke="#6A7A8A" stroke-width="1"/>
+
+        <!-- Top face highlight -->
+        <path d="M460,368 Q460,345 478,332 L572,286 Q594,274 610,288"
+              fill="none" stroke="#E8F0F8" stroke-width="2" opacity="0.3"/>
+
+        <!-- Bottom face shadow -->
+        <path d="M552,415 L645,355"
+              fill="none" stroke="#5A6A7A" stroke-width="1.5" opacity="0.3"/>
+      </g>
+
+      <!-- Lens assembly -->
+      <g transform="translate(628, 308)">
+        <!-- Lens housing outer -->
+        <circle cx="0" cy="0" r="46" fill="#3A4A5A"/>
+        <circle cx="0" cy="0" r="42" fill="#2A3A4A" stroke="#4A5A6A" stroke-width="1.5"/>
+
+        <!-- Lens glass -->
+        <circle cx="0" cy="0" r="36" fill="url(#lensGrad)"/>
+
+        <!-- Lens depth ring -->
+        <circle cx="0" cy="0" r="36" fill="none" stroke="#0D6B6E" stroke-width="2" opacity="0.5"/>
+        <circle cx="0" cy="0" r="30" fill="none" stroke="#44D4CC" stroke-width="0.5" opacity="0.3"/>
+
+        <!-- Lens inner glow overlay -->
+        <circle cx="0" cy="0" r="36" fill="url(#lensInnerGlow)"/>
+
+        <!-- Specular highlights -->
+        <ellipse cx="-12" cy="-14" rx="10" ry="6" fill="#FFFFFF" opacity="0.45" transform="rotate(-25, -12, -14)"/>
+        <ellipse cx="8" cy="10" rx="5" ry="3" fill="#FFFFFF" opacity="0.15" transform="rotate(-25, 8, 10)"/>
+
+        <!-- Iris/crosshair detail (AI scanning feel) -->
+        <line x1="-20" y1="0" x2="-10" y2="0" stroke="#7DFFEE" stroke-width="1" opacity="0.4"/>
+        <line x1="10" y1="0" x2="20" y2="0" stroke="#7DFFEE" stroke-width="1" opacity="0.4"/>
+        <line x1="0" y1="-20" x2="0" y2="-10" stroke="#7DFFEE" stroke-width="1" opacity="0.4"/>
+        <line x1="0" y1="10" x2="0" y2="20" stroke="#7DFFEE" stroke-width="1" opacity="0.4"/>
+      </g>
+
+      <!-- Scan/emission lines from lens (three arcs radiating outward) -->
+      <g transform="translate(628, 308)" opacity="0.5">
+        <path d="M45,-25 Q75,-35 85,-55" fill="none" stroke="#44D4CC" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M48,0 Q85,0 105,-15" fill="none" stroke="#44D4CC" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+        <path d="M45,25 Q75,35 90,20" fill="none" stroke="#44D4CC" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+      </g>
+
+      <!-- Floating data particles -->
+      <g opacity="0.5">
+        <circle cx="730" cy="270" r="3" fill="#7DFFEE" opacity="0.5"/>
+        <circle cx="755" cy="300" r="2" fill="#44D4CC" opacity="0.4"/>
+        <circle cx="720" cy="250" r="1.5" fill="#7DFFEE" opacity="0.6"/>
+        <circle cx="760" cy="340" r="2.5" fill="#44D4CC" opacity="0.3"/>
+        <circle cx="740" cy="315" r="1" fill="#7DFFEE" opacity="0.7"/>
+      </g>
+
+      <!-- Upward arrow / "topside" indicator - subtle -->
+      <g opacity="0.12" transform="translate(512, 200)">
+        <path d="M0,-30 L15,0 L5,0 L5,25 L-5,25 L-5,0 L-15,0 Z" fill="#44D4CC"/>
+      </g>
+
+    </g>
+  </g>
+</svg>
