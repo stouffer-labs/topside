@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <!--
+    Topside - Menu Bar / System Tray Icon
+    Monochrome periscope silhouette designed for macOS menu bar.
+    Should be used as a template image (isTemplate = true) so macOS
+    automatically adjusts for light/dark mode.
+  -->
+
+  <!-- Periscope vertical tube -->
+  <rect x="9.5" y="9" width="3" height="10" rx="0.5" fill="#000"/>
+
+  <!-- Periscope head (angled piece looking right-upward) -->
+  <path d="M9.5,9 L9.5,7.5 Q9.5,6 10.5,5.5 L14.5,5.5 Q15.5,5.5 16,6.5 L17,8 Q17.3,8.6 16.8,9 L12.5,9 Z" fill="#000"/>
+
+  <!-- Lens circle -->
+  <circle cx="16.2" cy="7" r="2.2" fill="#000"/>
+  <circle cx="16.2" cy="7" r="1.4" fill="#FFF"/>
+  <circle cx="16.2" cy="7" r="1" fill="#000" opacity="0.3"/>
+
+  <!-- Small lens highlight dot -->
+  <circle cx="15.7" cy="6.5" r="0.4" fill="#FFF"/>
+
+  <!-- Waterline indicator -->
+  <line x1="4" y1="13" x2="18" y2="13" stroke="#000" stroke-width="0.6" opacity="0.3"/>
+</svg>
